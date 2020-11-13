@@ -1,0 +1,104 @@
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Cliente</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+         
+     </head>
+	 	<body>
+	 		<div class="col-md-10" id="content-wrapper">
+	 			<div class="row">
+	 				<div class="col-lg-12">
+	 					<div class="clearfix">
+	 						<h1 class="pull-left">Cliente</h1>
+	 							
+	 							<div class="pull-right top-page-ui">
+		 							<a href="/Cliente/crear" th:href="@{'/Clientes/crear'}" class="btn btn-primary pull-right">
+		 								<i class="glyphicon glyphicon-plus">Agregar Cliente</i>
+		 							</a>
+	 							</div>
+	 							<div>
+		 							<a href="/Clientes/actualizar" th:href="@{'/Clientes/actualizar'}" class="btn btn-primary pull-right">
+		 								<i class="glyphicon glyphicon-plus">Actualizar Cliente</i>
+		 							</a>
+	 							</div>
+	 						
+	 					</div>
+	 					
+	 					<div class="row">
+	 						<div class="col-lg-12">
+	 							<div class="main-box clearfix">
+	 								<div class="table-responsive">
+	 									<table class="table user-list">
+	 									
+			 									<thead>
+			 										<tr>
+			 											<th><span>ID</span></th>
+			 											<th><span>Nombre</span></th>
+			 											<th><span>Apellidos</span></th>
+			 											<th><span>Direccion</span></th>
+			 											<th><span>Email</span></th>
+			 											<th><span>DUI</span></th>
+			 											<th><span>Telefono</span></th>
+			 											<th><span>Fecha_Nacimiento</span></th>
+			 										
+			 										<tr>
+			 									
+			 									</thead>
+			 									<tbody th:each="clientes : ${cliente}">
+			 									   
+			 										<tr>
+				 										<td th:text="${clientes.idCliente }"></td>
+				 										<td th:text="${clientes.nombreCliente }"></td>
+				 										<td th:text="${clientes.apellidoCliente  }"></td>
+				 										<td th:text="${clientes.direccionCliente}"></td>
+				 										<td th:text="${clientes.emailCliente }"></td>
+				 										<td th:text="${clientes.duicliente}"></td>
+				 										<td th:text="${clientes.fechaNacimiento}"></td>
+				 									
+				 										
+				 										<td>
+					 										<form method="post" action="/Clientes/delete/${Clientes.idCliente}" th:action="@{'/Clientes/delete/' + ${clientes.idCliente}}">
+					 											<input type="hidden" name="userId" th:value="${clientes.idCliente}"/>
+					 											<input type="hidden" name="_method" value="Borrar"/>
+					 											<button type="submit" name="deleteClientes" class="glyphicon glyphicon-trash">Borrar</button>	 										
+					 										</form>
+				 											 										
+				 										</td>
+			 										</tr>
+			 									</tbody>
+	 								
+	 									</table>
+	 								
+	 								</div>
+	 						
+	 							</div>
+	 						
+	 						</div>
+	 					
+	 					
+	 					
+	 					</div>
+	 			
+	 				</div>
+	 			
+	 			</div>
+	 		
+	 		
+	 		
+	 		
+	 		</div>
+	 	
+	 	
+	 	
+	 	</body>
+	 
+	 
+	 
+	 
+	 
+	 </html>
